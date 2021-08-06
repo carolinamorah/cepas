@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @wine.name %>
+</p>
+
+<p>
+  <strong>Cepa:</strong>
+  <%= @wine.strain_names_and_percentages %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @wine.score %>
+</p>
+
+
+<% if current_user.admin?%> 
+  <%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%end%>
+  <%= link_to 'Back', wines_path %>

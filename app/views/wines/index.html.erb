@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class= "title text-center"><strong>BDD Wines</strong></h1>
+
+<table class="table">
+  <thead class="table table-success">
+    <tr>
+      <th>Nombre</th>
+      <th>Cepa</th>
+      <th>Enólogo</th>
+      <th>Nota</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <% @wines.each do |wine| %>
+        <tr>
+            <td><%= wine.name %></td>
+            <td><%= wine.strain_names_and_percentages%></td>
+            <td><%= wine.get_oenologist%></td> 
+            <td><%= wine.score%></td>
+            <td><%= link_to 'Ver', wine %></td>
+            <% if current_user.admin?%> 
+              <td><%= link_to 'Editar', edit_wine_path(wine) %></td>
+              <td><%= link_to 'Eliminar', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% if current_user.admin?%>
+    <button type="button" class="btn btn-outline-dark"><%= link_to 'New Wine', new_wine_path %></button>
+      <div class ="links float-right">
+      <%= link_to 'Strains', strains_path %> |
+      <%= link_to 'Oenologists', oenologists_path %> |
+    </div>
+  <%end%>

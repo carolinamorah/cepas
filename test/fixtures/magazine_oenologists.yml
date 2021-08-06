@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  magazine: one
+  oenologist: one
+  jobtitle: one
+
+two:
+  magazine: two
+  oenologist: two
+  jobtitle: two

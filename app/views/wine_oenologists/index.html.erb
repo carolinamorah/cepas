@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wine Oenologists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wine</th>
+      <th>Oenologist</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wine_oenologists.each do |wine_oenologist| %>
+      <tr>
+        <td><%= wine_oenologist.wine_id %></td>
+        <td><%= wine_oenologist.oenologist_id %></td>
+        <td><%= link_to 'Show', wine_oenologist %></td>
+        <td><%= link_to 'Edit', edit_wine_oenologist_path(wine_oenologist) %></td>
+        <td><%= link_to 'Destroy', wine_oenologist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wine Oenologist', new_wine_oenologist_path %>

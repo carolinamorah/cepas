@@ -5,6 +5,10 @@ class Oenologist < ApplicationRecord
 
     has_many :wine_oenologists, dependent: :destroy 
     has_many :wines, through: :wine_oenologists
+
+    validates :name, presence: true
+    validates :nationality, presence: true
+    validates :age, presence: true
     
     
 

@@ -4,9 +4,10 @@ class Wine < ApplicationRecord
     has_many :wine_oenologists, dependent: :destroy
     has_many :oenologists, through: :wine_oenologists, dependent: :destroy
 
-    validates :score, inclusion: 1..100
+    validates :score, numericality: {less_than_or_equal_to: 100}, presence: true
+    validates :name, presence: true
     
-    
+
     def strain_names_and_percentages
         list=[]
         orderlist=[]
@@ -25,11 +26,11 @@ class Wine < ApplicationRecord
             if percent != ''
                 temp_strain = self.winestrains.where(strain_id: strain_id).first
                 temp_strain.percent = percent
-                temp_strain.save
+                temp_strain.save 
             end
         end
     end
-
+    
 
     def get_oenologist
         oenologists.map{ |oenologist| oenologist.name}.join(', ')
